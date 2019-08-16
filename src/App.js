@@ -7,41 +7,47 @@ import { Container, Col } from 'reactstrap';
 
 import SearchLocation from './components/SearchLocation/searchLocation';
 import ShowWeather from './components/ShowWeather/showWeather';
+import Node from './components/Node/node';
 
 import './App.css';
 
-import { Wrapper, Card, Button } from './style';
+import { Wrapper, Card, Button, Center, Root, Hierarchy } from './style';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      nodes: []
+    };
+  }
+
+  produceNode = () => {
+    this.setState({
+      nodes: [...this.state.nodes, { title: 'test' }]
+    });
+  };
+
   render() {
-    const { location, resetLocation } = this.props;
+    const { nodes } = this.state;
 
     return (
       <Wrapper>
-        <Container>
-          {!location.city ? (
-            <Col md={{ size: 6, offset: 3 }}>
-              <Card>
-                <SearchLocation />
-              </Card>
-            </Col>
-          ) : (
-            <Col md={{ size: 10, offset: 1 }}>
-              <Card>
-                <ShowWeather
-                  city={location.city}
-                  weatherConditions={location.weatherConditions}
-                />
-              </Card>
+        {/* <Root
+          onClick={() => {
+            this.produceNode();
+          }}
+        >
+          Root
+        </Root> */}
 
-              <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                <Button onClick={() => resetLocation()}>
-                  Search City Weather again
-                </Button>
-              </div>
-            </Col>
-          )}
-        </Container>
+        {/* <Hierarchy>
+          {nodes.map((node, index) => (
+            <Node>{node.title}</Node>
+          ))}
+        </Hierarchy> */}
+
+        <Node title="Title here" description="Sample description" />
       </Wrapper>
     );
   }

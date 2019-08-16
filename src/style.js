@@ -1,7 +1,15 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  padding-top: 3%;
+  /* padding-top: 3%; */
+  height: 100%;
+  width: 100%;
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* overflow-y: scroll; */
 `;
 
 export const Card = styled.div`
@@ -35,4 +43,33 @@ export const Button = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+export const Center = styled.div`
+  border: 1px solid red;
+  display: flex;
+  height: 100%;
+`;
+
+export const Root = styled.div`
+  border: 1px solid red;
+  width: 300px;
+  text-align: center;
+  min-height: 100px;
+  padding: 20px;
+`;
+
+export const Hierarchy = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+export const Node = styled.div`
+  border: 1px solid grey;
+  padding: 20px;
+  width: 300px;
+  margin: 0 10px;
+  min-height: 100px;
 `;
