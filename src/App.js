@@ -1,46 +1,44 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { resetLocation } from './actions/locationAction';
+import { bindActionCreators } from 'redux';
+import { Container } from 'reactstrap';
 
-import { Container, Col } from 'reactstrap';
+import { saveLocation } from './actions/locationAction';
 
 import SearchLocation from './components/SearchLocation/searchLocation';
 import ShowWeather from './components/ShowWeather/showWeather';
 
 import './App.css';
 
-import { Wrapper, Card, Button } from './style';
+import { Wrapper, Header, Heading, Content, Body } from './style';
 
 class App extends Component {
+  componentWillMount() {
+    this.props.saveLocation('Manila', 1199477);
+  }
+
   render() {
-    const { location, resetLocation } = this.props;
+    const { location } = this.props;
 
     return (
       <Wrapper>
         <Container>
-          {!location.city ? (
-            <Col md={{ size: 6, offset: 3 }}>
-              <Card>
-                <SearchLocation />
-              </Card>
-            </Col>
-          ) : (
-            <Col md={{ size: 10, offset: 1 }}>
-              <Card>
+          <Content>
+            <Header>
+              <Heading>Simple Weather App</Heading>
+              <SearchLocation />
+            </Header>
+
+            <Body>
+              {location.city ? (
                 <ShowWeather
                   city={location.city}
                   weatherConditions={location.weatherConditions}
                 />
-              </Card>
-
-              <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                <Button onClick={() => resetLocation()}>
-                  Search City Weather again
-                </Button>
-              </div>
-            </Col>
-          )}
+              )
+                : <div>Loading...</div>}
+            </Body>
+          </Content>
         </Container>
       </Wrapper>
     );
@@ -56,7 +54,7 @@ function mapStateToProps({ location }) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      resetLocation
+      saveLocation
     },
     dispatch
   );

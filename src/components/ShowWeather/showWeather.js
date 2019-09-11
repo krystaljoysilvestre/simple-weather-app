@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Input } from 'reactstrap';
 import moment from 'moment';
 
 import {
-  Label,
-  ListGroup,
-  ListGroupItem,
+  Wrapper,
+  Today,
+  City,
+  Container,
+  NextDays,
   Day,
-  Date,
   WeatherState,
   WeatherIcon,
   Temperature
@@ -18,28 +18,34 @@ class ShowWeather extends Component {
     const { city, weatherConditions } = this.props;
 
     return (
-      <div>
-        <Label>5 day Forecast in {city}</Label>
+      <Wrapper>
+        <Today>
+          <City>{city}</City>
+          <Day large>today</Day>
+          <Temperature large>
+            {Math.round(weatherConditions[0].min_temp)} °C
+            </Temperature>
+          <WeatherState large>{weatherConditions[0].weather_state_name}</WeatherState>
+        </Today>
 
-        <ListGroup>
-          {weatherConditions.map((item, index) => (
-            <ListGroupItem key={index}>
+        <NextDays>
+          {weatherConditions.slice(1).map((item, index) => (
+            <Container key={index}>
               <Day>{moment(item.applicable_date).format('dddd')}</Day>
-              <Date>{moment(item.applicable_date).format('MMMM DD')}</Date>
               <WeatherIcon
+                alt="weather-icon"
                 src={`https://www.metaweather.com/static/img/weather/${
                   item.weather_state_abbr
-                }.svg`}
+                  }.svg`}
               />
-              <WeatherState>{item.weather_state_name}</WeatherState>
-
               <Temperature>
-                {Math.round(item.min_temp)} °C -{Math.round(item.max_temp)} °C
+                {Math.round(item.max_temp)} °C/{Math.round(item.min_temp)} °C
               </Temperature>
-            </ListGroupItem>
+              <WeatherState>{item.weather_state_name}</WeatherState>
+            </Container>
           ))}
-        </ListGroup>
-      </div>
+        </NextDays>
+      </Wrapper>
     );
   }
 }

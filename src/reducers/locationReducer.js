@@ -1,6 +1,7 @@
 import { SAVE_LOCATION, RESET_LOCATION } from '../constants/actionTypes';
+import initialState from './initialState';
 
-export default (state = {}, action) => {
+export default (state = initialState.location, action) => {
   switch (action.type) {
     case SAVE_LOCATION:
       return {

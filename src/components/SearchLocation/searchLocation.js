@@ -3,15 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getCities, saveLocation } from '../../actions/locationAction';
 
-import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  ListGroup,
-  ListGroupItem
-} from 'reactstrap';
-
+import { Dropdown } from './style';
 class SearchLocation extends Component {
   constructor(props) {
     super(props);
@@ -40,37 +32,15 @@ class SearchLocation extends Component {
     const { saveLocation } = this.props;
 
     return (
-      <Form>
-        <FormGroup>
-          <Label>Enter a city name</Label>
-
-          <Input
-            type="text"
-            placeholder="Search for a city"
-            onChange={e => this.fetchLocation(e.target.value)}
-          />
-        </FormGroup>
-
-        {loading ? (
-          <div>Fetching cities...</div>
-        ) : (
-          cities.length > 0 && (
-            <FormGroup>
-              <ListGroup>
-                {cities.map((item, index) => (
-                  <ListGroupItem
-                    key={index}
-                    action
-                    onClick={() => saveLocation(item.title, item.woeid)}
-                  >
-                    {item.title}
-                  </ListGroupItem>
-                ))}
-              </ListGroup>
-            </FormGroup>
-          )
-        )}
-      </Form>
+      <Dropdown
+        busy={loading}
+        data={cities}
+        textField='title'
+        filter="startsWith"
+        placeholder="Search city"
+        onChange={value => this.fetchLocation(value)}
+        onSelect={value => saveLocation(value.title, value.woeid)}
+      />
     );
   }
 }

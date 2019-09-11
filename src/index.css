@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: #f5f5f5;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: linear-gradient(to right, rgb(54, 209, 220), rgb(91, 134, 229));
 }
