@@ -1,0 +1,4 @@
++ redux@3.7.2
+updated 2 packages and audited 14823 packages in 15.727s
+found 37 vulnerabilities (29 low, 2 moderate, 6 high)
+  run `npm audit fix` to fix them, or `npm audit` for details

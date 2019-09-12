@@ -5,6 +5,7 @@ import { Container } from 'reactstrap';
 
 import { saveLocation } from './actions/locationAction';
 
+import PushNotification from './components/PushNotification/pushNotification';
 import SearchLocation from './components/SearchLocation/searchLocation';
 import ShowWeather from './components/ShowWeather/showWeather';
 
@@ -26,26 +27,32 @@ class App extends Component {
     const { location } = this.props;
 
     return (
-      <Wrapper>
-        <Container>
-          <Content>
-            <Header>
-              <Heading>Simple Weather App</Heading>
-              <SearchLocation />
-            </Header>
+      <div>
+        <PushNotification
+          title={`${location.weatherConditions[0].weather_state_name} in ${location.city}`}
+          icon={`https://www.metaweather.com/static/img/weather/png/64/${location.weatherConditions[0].weather_state_abbr}.png`}
+        />
+        <Wrapper>
+          <Container>
+            <Content>
+              <Header>
+                <Heading>Simple Weather App</Heading>
+                <SearchLocation />
+              </Header>
 
-            <Body>
-              {location.city ? (
-                <ShowWeather
-                  city={location.city}
-                  weatherConditions={location.weatherConditions}
-                />)
-                : (<Loader />)
-              }
-            </Body>
-          </Content>
-        </Container>
-      </Wrapper>
+              <Body>
+                {location.city ? (
+                  <ShowWeather
+                    city={location.city}
+                    weatherConditions={location.weatherConditions}
+                  />)
+                  : (<Loader />)
+                }
+              </Body>
+            </Content>
+          </Container>
+        </Wrapper>
+      </div>
     );
   }
 }

@@ -3,26 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ajv": "^6.10.2",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "concurrently": "^4.1.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jquery": "^3.4.1",
     "moment": "^2.24.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-redux": "^5.0.7",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "react-web-notification": "^0.6.1",
     "react-widgets": "^4.4.11",
-    "reactstrap": "^8.0.0",
-    "redux": "^3.7.2",
+    "reactstrap": "^8.0.1",
+    "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.2.0",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.6",
-    "react-scripts": "^1.1.1"
+    "react-scripts": "^3.1.1"
   },
   "scripts": {
     "start-dev": "react-scripts start",
