@@ -21,4 +21,10 @@ After successful installation, start the app by running:
 npm run start
 ```
 
+To get the production built version,
+```
+npm run build
+```
+
 > Note: The proxy server is made as a workaround to solve Cross-Origin Resource Sharing (CORS) issue.
+
