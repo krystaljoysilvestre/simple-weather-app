@@ -1,4 +1,7 @@
 # Simple Weather App
+
+[See demo](https://simple-weather-app.kjmsilvestre.now.sh/)
+
 This app shows the 5-day weather conditions of a given city 
 
 ## Technologies Used
