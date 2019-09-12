@@ -30,7 +30,7 @@ export const City = styled.div`
 `;
 
 export const Day = styled.p`
-  font-size: ${props => props.large ? '18px' : '10px'};
+  font-size: ${props => props.large ? '18px' : '12px'};
   color: white;
   text-align: left;
   text-transform: lowercase;

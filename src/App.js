@@ -10,11 +10,16 @@ import ShowWeather from './components/ShowWeather/showWeather';
 
 import './App.css';
 
-import { Wrapper, Header, Heading, Content, Body } from './style';
+import { Wrapper, Header, Heading, Content, Body, Loader } from './style';
 
 class App extends Component {
   componentWillMount() {
-    this.props.saveLocation('Manila', 1199477);
+    const { location, saveLocation } = this.props;
+
+    if (!location.city) {
+      saveLocation('Manila', 1199477);
+    }
+
   }
 
   render() {
@@ -34,9 +39,9 @@ class App extends Component {
                 <ShowWeather
                   city={location.city}
                   weatherConditions={location.weatherConditions}
-                />
-              )
-                : <div>Loading...</div>}
+                />)
+                : (<Loader />)
+              }
             </Body>
           </Content>
         </Container>
