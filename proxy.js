@@ -14,7 +14,6 @@ app.get('*', (req, res) => {
       res.json(result.data);
     })
     .catch(err => {
-      console.log(err);
       res.status(500).json(err.message);
     });
 });
