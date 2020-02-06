@@ -14,24 +14,19 @@ import './App.css';
 import { Wrapper, Header, Heading, Content, Body, Loader } from './style';
 
 class App extends Component {
-  componentWillMount() {
-    const { location, saveLocation } = this.props;
-
-    if (!location.city) {
-      saveLocation('Manila', 1199477);
-    }
-
-  }
-
   render() {
     const { location } = this.props;
 
     return (
       <div>
-        <PushNotification
-          title={`${location.weatherConditions[0].weather_state_name} in ${location.city}`}
-          icon={`https://www.metaweather.com/static/img/weather/png/64/${location.weatherConditions[0].weather_state_abbr}.png`}
-        />
+        {location.weatherConditions &&
+          location.weatherConditions.length > 0 && (
+            <PushNotification
+              title={`${location.weatherConditions[0].weather_state_name} in ${location.city}`}
+              icon={`https://www.metaweather.com/static/img/weather/png/64/${location.weatherConditions[0].weather_state_abbr}.png`}
+            />
+          )}
+
         <Wrapper>
           <Container>
             <Content>
@@ -45,9 +40,10 @@ class App extends Component {
                   <ShowWeather
                     city={location.city}
                     weatherConditions={location.weatherConditions}
-                  />)
-                  : (<Loader />)
-                }
+                  />
+                ) : (
+                  <Loader />
+                )}
               </Body>
             </Content>
           </Container>
@@ -72,7 +68,4 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
